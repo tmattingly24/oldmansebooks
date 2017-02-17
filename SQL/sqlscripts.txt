@@ -1,0 +1,9 @@
+SELECT  a.BookID, 
+        a.TITLE,
+        GROUP_CONCAT(c.AUTHFNAME ORDER BY c.AUTHFNAME) authors
+FROM    books a
+        INNER JOIN linkauthbooks b
+            ON a.BookID = b.BookID 
+        INNER JOIn authors c
+            ON b.AUTHID = c.AUTHID
+GROUP   BY a.BookID, a.Title
