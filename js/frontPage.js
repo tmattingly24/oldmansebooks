@@ -5,8 +5,7 @@
         
         if (readyState == "interactive") {
          
-            
-            document.getElamentById("test");
+        
             
         }
     }

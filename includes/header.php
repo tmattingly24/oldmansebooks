@@ -1,6 +1,7 @@
-<header>
-        <img src="img/bookthumbs/thumb1.jpg" alt = "company logo"/>
-
+<header id = standardHead>
+    
+    <h1>Old Manse Books</h1>
+    
             <nav class="sitenav">
                 <ul>
                     <li>
@@ -20,5 +21,4 @@
                     </li>
                 </ul>
             </nav>
-        
     </header>
