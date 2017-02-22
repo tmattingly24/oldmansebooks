@@ -345,3 +345,45 @@ nav.sitenav li.youarehere a {
     font-family: 'Rye', cursive;  
     
 }
+
+#investTerms {
+ margin-left: 38%;
+ text-align: center;
+ color: darkblue;
+ font-family: 'arial';
+ font-size: small;
+    
+}
+
+#adminMain {
+    height: 80vh;
+    margin: 15vh auto 0;
+    
+}
+
+#centerAdminMain {
+    
+    margin-top: 5em;
+    text-align:center;
+    width: 33.3%;
+    float: left;
+    clear: none;
+}
+
+#rightAdminMain {
+     margin-top: 5em;
+    text-align:center;
+    width: 32.3%;
+    float: right;
+    clear: right;
+    padding: .3em;
+}
+
+#leftAdminMain {
+    line-height: 3em;
+     margin-top: 5em;
+    text-align:center;
+    width: 33.3%;
+    float: left;
+    clear: left;
+}

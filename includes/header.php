@@ -5,7 +5,7 @@
             <nav class="sitenav">
                 <ul>
                     <li>
-                        <a href="index.php">Home</a>
+                        <a href="store.php">Home</a>
                     </li>
                     <li>
                         <a href="login.php">Login</a>
