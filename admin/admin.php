@@ -16,34 +16,36 @@
         <link rel="stylesheet" href="../css/global.css" />
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
         <link href="https://fonts.googleapis.com/css?family=Rye" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
-        </head>
-       
+    </head>
+
     <body>
         <?php include("../includes/adminHead.php") ; ?>
-        
-            <div id = "adminMain">
-        
-                <div id = "leftAdminMain"><a class = "btn">Add Inventory</a>  <a class = "btn">View Sales</a><br>
-                <a class = "btn">View Unshipped Orders</a><br>
-                    <a class = "btn">View Something Else</a>
-                
-                                
+
+            <div id="adminMain">
+
+                <div id="leftAdminMain"><a href="addInventory.php" class="btn">Add Inventory</a> <a class="btn">View Sales</a>
+                    <br>
+                    <a class="btn">View Unshipped Orders</a>
+                    <br>
+                    <a class="btn">Add Expenses</a>
+
+
                 </div>
-                <div id = "centerAdminMain"><a class = "btn">View Inventory</a>
-                <a class = "btn">View Profits</a>
-                
-                
+                <div id="centerAdminMain"><a class="btn">View Inventory</a>
+                    <a class="btn">View Profits</a>
+
+
                 </div>
-                <div id = "rightAdminMain"><a class = "btn">View Site Stats</a>
-                <a class = "btn">View Expenses</a>
+                <div id="rightAdminMain"><a class="btn">View Site Stats</a>
+                    <a class="btn">View Expenses</a>
                 </div>
-                
+
             </div>
-            
-        <?php include("../includes/footer.php") ?>
-        
+
+            <?php include("../includes/footer.php") ?>
+
     </body>
 
     </html>

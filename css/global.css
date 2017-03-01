@@ -44,7 +44,7 @@
 
 /*CSS Reset *****************************************************
 
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -291,16 +291,16 @@ nav.sitenav li.youarehere a {
   background-size:cover;*/
 }
 #teamTitle {
- 
+
  font-family: 'Slabo 27px', serif;
-    
+
 }
 
 #teamTitle h5 {
-    
+
     font-size: .5em;
      font-family: 'lobster', cursive;
-    
+
 }
 
 #team {
@@ -339,11 +339,11 @@ nav.sitenav li.youarehere a {
 }
 
 .highlight {
-    
+
     font-size:1.5em;
  color: olive;
-    font-family: 'Rye', cursive;  
-    
+    font-family: 'Rye', cursive;
+
 }
 
 #investTerms {
@@ -352,17 +352,17 @@ nav.sitenav li.youarehere a {
  color: darkblue;
  font-family: 'arial';
  font-size: small;
-    
+
 }
 
 #adminMain {
     height: 80vh;
     margin: 15vh auto 0;
-    
+
 }
 
 #centerAdminMain {
-    
+
     margin-top: 5em;
     text-align:center;
     width: 33.3%;
@@ -386,4 +386,27 @@ nav.sitenav li.youarehere a {
     width: 33.3%;
     float: left;
     clear: left;
+}
+
+#addInv {
+ margin: 10em 0 0 2em;
+}
+
+#addInv label {
+
+ font-size:medium;
+    font-weight:bold;
+}
+
+
+#warning {
+
+    color: red;
+
+}
+
+#success {
+
+    color: darkgreen;
+
 }

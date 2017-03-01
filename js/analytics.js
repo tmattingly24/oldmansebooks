@@ -1,13 +1,7 @@
-(function () {
+$(document).ready(function () {
     
       
-    document.onreadystatechange = function () {
-        
-        var readyState = document.readyState;
-        
-        if (readyState == "interactive") {
             
-            console.log("test");
             var usrAgnt = navigator.userAgent;
             console.log("user agent string " + usrAgnt);
             
@@ -15,8 +9,8 @@
                 console.log(JSON.stringify(data, null, 2));
             });
             
-        }
-    }
+        
     
     
-})();
+    
+});
