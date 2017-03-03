@@ -91,7 +91,18 @@ function createBook(photos) {
     var edition = document.getElementById("edition").value;
     var binding = document.getElementById("binding").value;
     var description = document.getElementById("description").value;
-
+    var paths = [];
+    var sPaths = "";
+    
+    
+    for(var i = 0; i<photos.length;i++){
+        
+        paths[i] = photos[i].name;
+    }
+    
+    
+    var sPaths = paths.join();
+    
 
     var book = {
         title: title,
@@ -104,7 +115,8 @@ function createBook(photos) {
         condition: condition,
         edition: edition,
         binding: binding,
-        description: description
+        description: description,
+        photos: sPaths
     };
 
     saveBook(book);
@@ -124,6 +136,7 @@ function uploadPhotos(photos) {
         if (xhr.status === 200) {
 
             alert(xhr.responseText);
+            createBook(photos);
 
         } else {
 
