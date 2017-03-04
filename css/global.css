@@ -252,11 +252,6 @@ nav.sitenav a:hover {
     text-decoration: underline;
 }
 
-nav.sitenav li.youarehere a {
-    background-color: #cdfecd;
-    border-bottom: thin solid green;
-}
-
 .main {
     height: 80vh;
     background-position: center;
@@ -349,7 +344,7 @@ nav.sitenav li.youarehere a {
 #investTerms {
  margin-left: 38%;
  text-align: center;
- color: darkblue;
+ color: yellow;
  font-family: 'arial';
  font-size: small;
 
@@ -409,4 +404,16 @@ nav.sitenav li.youarehere a {
 
     color: darkgreen;
 
+}
+
+#storeMain {
+    height: 80vh;
+    margin: 15vh auto 0;
+}
+
+.youarehere {
+    
+ color: red;
+ text-decoration:underline;
+    
 }

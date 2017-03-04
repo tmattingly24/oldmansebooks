@@ -5,19 +5,22 @@
             <nav class="sitenav">
                 <ul>
                     <li>
-                        <a href="store.php">Home</a>
+                        <a href = "" id = "storeLink">Home</a>
                     </li>
                     <li>
-                        <a href="login.php">Login</a>
+                        <a href = "" id = "loginLink">Login</a>
                     </li>
                     <li>
-                        <a href="about.php">Sell Your Books</a>
+                        <a href = "" id = "sellLink">Sell Your Books</a>
                     </li>
                     <li>
-                        <a href="#">FAQ</a>
+                        <a href = "" id = "faqLink">FAQ</a>
                     </li>
                       <li>
-                        <a href="#">About</a>
+                        <a href = "" id = "aboutLink">About</a>
+                    </li>
+                    <li>
+                        <a href = "" id = "investLink">Invest</a>
                     </li>
                 </ul>
             </nav>

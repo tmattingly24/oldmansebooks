@@ -34,7 +34,41 @@
                     <br>
                     <label>Genre:</label>
                     <br>
-                    <input type="text" id="genre" name="genre" />
+                    <select id="genre" name="genre">
+                        <option>Fiction:Science Fiction</option>
+                        <option>Fiction:Satire</option>
+                        <option>Fiction:Action and Adventure</option> 
+                        <option>Fiction:Drama</option>
+                        <option>Fiction:Mystery</option> 
+                        <option>Fiction:Romance</option>
+                        <option>Fiction:Satire</option> 
+                        <option>Fiction:Horror</option> 
+                        <option>Fiction:Children's</option>
+                        <option>Fiction:Religion Spirituality &amp; New Age</option> 
+                        <option>Fiction:Anthology</option>
+                        <option>Fiction:Poetry</option>
+                        <option>Fiction:Comics</option>
+                        <option>Fiction:Series</option>
+                        <option>Fiction:Trilogy</option>
+                        <option>Fiction:Fantasy</option>
+                        <option>Non-Fiction:Encyclopedia</option>
+                        <option>Non-Fiction:Dictionary</option>
+                        <option>Non-Fiction:Art</option>
+                        <option>Non-Fiction:Cookbook</option>
+                        <option>Non-Fiction:Diaries</option>
+                        <option>Non-Fiction:Journals</option>
+                        <option>Non-Fiction:Biography</option>
+                        <option>Non-Fiction:Autobiography</option>
+                        <option>Non-Fiction:Religion Spirituality &amp; New Age</option> 
+                        <option>Non-Fiction:Science</option>
+                        <option>Non-Fiction:History</option>
+                        <option>Non-Fiction:Math</option>
+                        <option>Non-Fiction:Self-Help</option>
+                        <option>Non-Fiction:Health</option> 
+                        <option>Non-Fiction:How-to</option> 
+                        <option>Non-Fiction:Travel</option>
+                        <option>Non-Fiction:Satire</option> 
+                    </select>
                     <br>
                     <label>ISBN:</label>
                     <br>

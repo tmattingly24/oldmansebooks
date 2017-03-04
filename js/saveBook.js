@@ -26,7 +26,7 @@ $(document).ready(function () {
         if (photos.length == files.length && photos.length != 0) {
 
 
-            uploadPhotos(photos);
+            uploadPhotos(photos, 0);
 
         } else {
             alert("error");
@@ -123,28 +123,49 @@ function createBook(photos) {
 
 }
 
-function uploadPhotos(photos) {
+function uploadPhotos(photos, i) {
 
     var formData = new FormData();
-    var file = photos[0];
+    
+    
+    var file = photos[i];
     formData.append('fileToUpload', file, file.name);
     var xhr = new XMLHttpRequest();
 
     xhr.open('POST', 'upload.php', true);
+    
     xhr.onload = function () {
 
         if (xhr.status === 200) {
-
-            alert(xhr.responseText);
-            createBook(photos);
+            
+            
+            if(i < photos.length-1){
+                i++;
+                alert(xhr.responseText + i);
+                uploadPhotos(photos,i);
+                
+            }
+            
+            else {
+            
+                createBook(photos);
+                
+                }
 
         } else {
 
             alert('An error occurred!');
 
         }
+        
+       
     };
-
+    
     xhr.send(formData);
-
+    
 }
+    
+
+    
+        
+    

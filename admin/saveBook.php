@@ -2,19 +2,22 @@
 
 require("../BOOK.php");
 
-
+$new = "new";
+$old = "old";
 
 $BOOK = new BOOK($_POST);
 
 $book = $BOOK->jsonD('book');
 
+$paths = $book['photos'];
 $isbn = $book['isbn'];
 
 $bookExists = $BOOK->bookExists($isbn);
 
 if($bookExists) {
     
-    $BOOK->addOne($book['isbn']);   
+    $BOOK->addOne($book['isbn']);
+    
 }
 
 else {
@@ -28,14 +31,15 @@ $id = $BOOK->getBookID($isbn);
 $pub = $book['publisher'];
 $pubExists = $BOOK->pubExists($pub);
 
+
 if($pubExists) {
     
-    echo "insert";   
+    $BOOK->insertPub($pub,$id,$old);   
 }
 
-else {
+else if(!$pubExists){
     
-    echo "nope";
+    $BOOK->insertPub($pub,$id,$new);
     
 }
 
@@ -46,18 +50,26 @@ $authArr = explode("/", $auth);
 foreach($authArr as $author){
     
     $authExists = $BOOK->authExists($author);
-    
+   
     if($authExists){
         
-        echo "insert";   
+        $BOOK->insertAuth($author,$id,$old);  
     }
 
-    else {
+    else if(!$authExists) {
     
-        echo "nope";
+        $BOOK->insertAuth($author,$id,$new);
     }   
 
 }
+
+$BOOK->addImg($id,$paths);
+
+$condition = $BOOK->getCondition($book['condition']);
+
+$BOOK->createSKU($id,$condition,$book);
+
+
 
 ?>
 
