@@ -56,6 +56,55 @@ class DB {
         
     }
     
+    
+     public function parseResult($resultSet, $returnCol){
+        
+        $i = 0;
+        if($returnCol == "all") {
+          
+            while ($row = mysql_fetch_array($resultSet)){
+                foreach ($row as $col => $val){
+                    
+                    $rows[$col]=$val;
+                }
+                
+                
+            }
+            return $rows;
+            
+        } else {
+         
+                while ($row = mysql_fetch_assoc($resultSet)) {
+                foreach ($row as $col => $val) {
+                    
+                    if ($col == $returnCol) {
+                        $return = $val;
+                    }
+                }
+            }
+            
+            return $return;
+            
+            }
+
+        }
+
 }
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+    
+
 
 ?>

@@ -3,7 +3,7 @@
 if (!empty($_FILES) && isset($_FILES['fileToUpload'])) {
     switch ($_FILES['fileToUpload']["error"]) {
         case UPLOAD_ERR_OK:
-            $target = "../img/junk/";
+            $target = "../img/bookImg/";
             $target = $target . basename($_FILES['fileToUpload']['name']);
 
             if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target)) {

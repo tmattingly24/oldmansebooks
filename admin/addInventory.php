@@ -128,6 +128,8 @@
                     <input class="btn" type="submit" value="Save" />
 
                 </form>
+                <div id = "pResponse"></div>
+                <div id = "response"></div>
 
             </div>
 

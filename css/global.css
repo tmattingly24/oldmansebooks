@@ -198,6 +198,7 @@ body {
     height: 15vh;
     /*background:  #255E69;*/
     background-image: url("../img/02.jpg");
+    z-index:75;
 }
 
 #standardHead h1 {
@@ -259,6 +260,8 @@ nav.sitenav a:hover {
     background-size: cover;
     margin: 15vh auto 0;
 }
+
+
 
 #box {
     z-index: 10;
@@ -407,7 +410,7 @@ nav.sitenav a:hover {
 }
 
 #storeMain {
-    height: 80vh;
+    
     margin: 15vh auto 0;
 }
 
@@ -416,4 +419,85 @@ nav.sitenav a:hover {
  color: red;
  text-decoration:underline;
     
+}
+
+.topBookList  {
+margin:17.5vh 0 1vh 2vh;
+ height: 35vh;
+
+    
+}
+
+.bookList  {
+margin:2.5vh 0 1vh 2vh;
+ height: 35vh;
+
+}
+.listImg {
+    margin-left:2vh;
+    margin-top:1vh;
+    float: left;
+    clear: left;
+    min-width: 23vh;
+    min-height: 33vh;
+    max-width: 23vh;
+    max-height: 33vh;
+    
+    
+}
+
+.bookListInfo {
+    
+    padding: 2vh;
+    margin-left:25vh;
+   
+}
+
+.photo-frame {
+    box-shadow: 1px 1px 1px 0px #999,
+        2px 2px 1px 0px #888,
+        3px 3px 1px 0px #777,
+        4px 4px 1px 0px #666,
+        5px 5px 1px 0px #555,
+        6px 6px 1px 0px #444,
+        7px 7px 1px 0px #333,
+        8px 8px 3px 0px #303030;
+    -moz-box-shadow: 1px 1px 1px 0px #999,
+        2px 2px 1px 0px #888,
+        3px 3px 1px 0px #777,
+        4px 4px 1px 0px #666,
+        5px 5px 1px 0px #555,
+        6px 6px 1px 0px #444,
+        7px 7px 1px 0px #333,
+        8px 8px 3px 0px #303030;
+    -webkit-box-shadow: 1px 1px 1px 0px #999,
+        2px 2px 1px 0px #888,
+        3px 3px 1px 0px #777,
+        4px 4px 1px 0px #666,
+        5px 5px 1px 0px #555,
+        6px 6px 1px 0px #444,
+        7px 7px 1px 0px #333,
+        8px 8px 3px 0px #303030;
+    transform: translate(-8px,-8px);
+    -ms-transform: translate(-8px,-8px);
+    -moz-transform: translate(-8px,-8px);
+    -webkit-transform: translate(-8px,-8px);
+    -o-transform: translate(-8px,-8px);
+
+    transition: all 0.5s ease 0s;
+    -ms-transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+}
+
+.bookList:nth-child(even){
+    
+     background: rgba(220, 220, 220, 1);
+}
+
+.bookListInfo h5 {
+
+    font-size: 1.1em;
+     
 }

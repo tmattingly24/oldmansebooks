@@ -17,3 +17,15 @@ SELECT books.BOOKID, books.TITLE,books.ISBN, books.PUBDATE, books.GENREID, books
  WHERE sku.BOOKID = books.BOOKID AND linkauthbooks.BOOKID AND linkpubbooks.BOOKID AND sku.SOLD = "0"
  AND authors.AUTHID = linkauthbooks.AUTHID AND publishers.PUBID = linkpubbooks.PUBID 
  AND linkauthbooks.BOOKID = books.BOOKID AND sku.BOOKID AND linkpubbooks.BOOKID = books.BOOKID AND sku.BOOKID Close but not quite
+ 
+ 
+ SELECT * FROM `books`, linkauthbooks, linkpubbooks, sku, authors, publishers, img, genre, cond WHERE books.BOOKID = linkauthbooks.BOOKID AND books.BOOKID = linkpubbooks.BOOKID AND books.BOOKID = sku.BOOKID AND
+ authors.AUTHID = linkauthbooks.AUTHID and publishers.PUBID = linkpubbooks.PUBID AND
+ img.BOOKID = books.BOOKID and genre.GENREID = books.GENREID AND cond.CONDITIONID = sku.CONDITIONID AND sku.SOLD = "0" Closer
+ 
+SELECT * FROM books 
+INNER JOIN sku on books.BOOKID = sku.BOOKID
+INNER JOIN linkauthbooks on books.BOOKID = linkauthbooks.BOOKID
+INNER JOIN linkpubbooks on books.BOOKID = linkpubbooks.BOOKID
+INNER JOIN authors on linkauthbooks.AUTHID = authors.AUTHID
+INNER JOIN publishers on linkpubbooks.PUBID = publishers.PUBID

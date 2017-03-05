@@ -44,7 +44,8 @@ class BOOK {
     
     public function jsonE($obj) {
 
-        $obj = json_encode($this->request[$obj], true);
+        /*$obj = json_encode($this->request[$obj], true);*/
+        $obj = json_encode($obj, true);
 
         return $obj;
 
@@ -295,6 +296,22 @@ class BOOK {
         
     }
     
+    
+    public function initStore($resultsPer) {
+        
+        $query = "SELECT * FROM sku WHERE SOLD = '0' LIMIT $resultsPer";
+        $result = DB::executeQuery($query, true);
+        
+        $books = DB::parseResult($result, 'all');
+        
+        return $books;
+        
+    }
+    
+   
+   
+           
+           
 }
 
 

@@ -68,8 +68,10 @@ function saveBook(book) {
 
 
         if (http.readyState == 4 && http.status == 200) {
-
-            alert(http.responseText);
+            
+            var form = document.getElementById("addInv");
+            form.reset();
+            $("#response").append(http.responseText);
         }
     }
     var sbook = JSON.stringify(book);
@@ -141,7 +143,8 @@ function uploadPhotos(photos, i) {
             
             if(i < photos.length-1){
                 i++;
-                alert(xhr.responseText + i);
+                $('#file-select').value = "";
+                $("#pResponse").append(http.responseText);
                 uploadPhotos(photos,i);
                 
             }
