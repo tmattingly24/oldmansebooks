@@ -3,9 +3,11 @@
 require("BOOK.php");
 
 $BOOK = new BOOK($_POST);
-$resultsPer = 2;
-$books = $BOOK->initStore($resultsPer);
+$offset = $_POST['offset'];
+$book = $BOOK->initStore($offset);
 
+
+echo $book;
 
 
 

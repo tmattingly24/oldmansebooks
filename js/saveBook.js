@@ -144,7 +144,7 @@ function uploadPhotos(photos, i) {
             if(i < photos.length-1){
                 i++;
                 $('#file-select').value = "";
-                $("#pResponse").append(http.responseText);
+                $("#pResponse").append(xhr.responseText);
                 uploadPhotos(photos,i);
                 
             }

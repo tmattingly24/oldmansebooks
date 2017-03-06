@@ -297,21 +297,116 @@ class BOOK {
     }
     
     
-    public function initStore($resultsPer) {
+    public function initStore($offset) {
         
-        $query = "SELECT * FROM sku WHERE SOLD = '0' LIMIT $resultsPer";
+        $imgPrefix = "img/bookImg/";
+        $query = "SELECT * FROM books INNER JOIN sku WHERE sku.BOOKID = books.BOOKID AND SOLD = 0 LIMIT 1";
         $result = DB::executeQuery($query, true);
+        $edition = DB::parseResult($result,'EDITION');
+        $isbn = DB::parseResult($result,'ISBN');
+        $title = DB::parseResult($result, 'TITLE');
+        $price = DB::parseResult($result, 'PRICE');
+        $description = DB::parseResult($result, 'DESCRIPTION');
+        $id = DB::parseResult($result, 'BOOKID');
+        $pubDate = DB::parseResult($result, 'PUBDATE');
+        $author = $this->getAuthNameById($id);
+        $publisher = $this->getPubNameById($id);
+        $img = $this->getImgById($id);
         
-        $books = DB::parseResult($result, 'all');
+        $book = "<div class = \"topBookList\">
+        <div>$img<div class = \"underImg\"><img src = \"img/icons/glyphicons-225-chevron-left.png\">&nbsp;Next Image&nbsp;<img src = \"img/icons/glyphicons-224-chevron-right.png\"></div></div>
+        <div class = \"bookListInfo\"><ul>
+        <li><span class=\"highlight\"><strong>$title</strong></span></li><br>
+        <li>&nbsp;ISBN: $isbn</li>
+        <li>&nbsp;By: $author</li>
+        <li>&nbspPublished: $pubDate</li>
+        <li>&nbspBy: $publisher</li>
+        <li>&nbspEdition: $edition</li><br>
+        <li><span class=\"price\"><strong>Price: $$price</strong></span></li><br>
+        <li><h5><p></p>$description </p></h5><li>
+        </ul><br><br>
+        </div>
+        </div>";
         
-        return $books;
+        return $book;
         
     }
     
-   
-   
+   public function getAuthNameById($bookId){
+        
+       $query = "SELECT AUTHID FROM linkauthbooks WHERE BOOKID = \"$bookId\"";
+       $result = DB::executeQuery($query, true);
+       $authId = DB::parseResult($result,'AUTHID');
+       $query = "SELECT AUTHNAME FROM authors WHERE AUTHID = \"$authId\"";
+       $result = DB::executeQuery($query, true);
+       $author = DB::parseResult($result,'AUTHNAME');
+       
+       if(is_array($author)){
            
+           /*handle it*/
            
+       }
+ 
+       
+       return $author;
+        
+        
+        
+    }
+    
+    public function getPubNameById($bookId){
+        
+       $query = "SELECT PUBID FROM linkpubbooks WHERE BOOKID = \"$bookId\"";
+       $result = DB::executeQuery($query, true);
+       $pubId = DB::parseResult($result,'PUBID');
+       $query = "SELECT PUBNAME FROM publishers WHERE PUBID = \"$pubId\"";
+       $result = DB::executeQuery($query, true);
+       $pub = DB::parseResult($result,'PUBNAME');
+       
+       return $pub;
+        
+        
+    }
+    
+    public function getImgById($bookId){
+       
+       $i = 0;
+       $imgPrefix = "img/bookImg/";
+        
+       $query = "SELECT IMGPATH FROM img WHERE BOOKID = \"$bookId\"";
+       $result = DB::executeQuery($query, true);
+       $img = DB::parseResult($result,'IMGPATH');
+        
+        if(is_array($img)){
+         
+            foreach($img as $image){
+                
+                if($i == 0){
+                
+                    $returnImg = "<img class = \"listImg photo-frame\" src = \"$imgPrefix$image\"/>";
+                    $i++;
+                } else {
+                    
+                    $returnImg = $returnImg."<img class = \"listImg photo-frame hidden\" src = \"$imgPrefix$image\"/>";
+                }
+                
+            }
+        }
+       
+        if(!isset($returnImg)){
+         
+            $returnImg = $img;
+            
+        }
+        
+       return $returnImg;
+        
+        
+    }
+        
+        
+        
+    
 }
 
 

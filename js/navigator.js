@@ -48,9 +48,13 @@ function fireNav(where){
 
         if (http.readyState == 4 && http.status == 200) {
             
+            
             $('#view').html(http.responseText);
+            
         }
     }
+    
+   
     
     http.send("where=" + where);
 }

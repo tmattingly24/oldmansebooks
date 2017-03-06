@@ -214,7 +214,7 @@ footer {
     width: 100%;
     height: 20vh;
     /*background:  #255E69;*/
-    background-image: url("../img/02.jpg")
+    background-image: url("../img/02.jpg");
 }
 
 .sitenav {
@@ -422,15 +422,16 @@ nav.sitenav a:hover {
 }
 
 .topBookList  {
-margin:17.5vh 0 1vh 2vh;
- height: 35vh;
-
+margin:17.5vh 0 2vh 2vw;
+min-height: 35vh;
+max-height:50vh;
     
 }
 
 .bookList  {
-margin:2.5vh 0 1vh 2vh;
- height: 35vh;
+margin:2.5vh 0 2vh 2vh;
+min-height: 35vh;
+max-height:50vh;
 
 }
 .listImg {
@@ -447,10 +448,14 @@ margin:2.5vh 0 1vh 2vh;
 }
 
 .bookListInfo {
-    
+    width: 65%;
     padding: 2vh;
     margin-left:25vh;
-   
+     display: -webkit-box;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 12;
+  -webkit-box-orient: vertical;  
 }
 
 .photo-frame {
@@ -493,11 +498,32 @@ margin:2.5vh 0 1vh 2vh;
 
 .bookList:nth-child(even){
     
-     background: rgba(220, 220, 220, 1);
+    /* background: rgba(220, 220, 220, 1);*/
 }
 
 .bookListInfo h5 {
 
     font-size: 1.1em;
      
+}
+
+.price {
+font-size:1.5em;
+ color: olivedrab;
+    font-family: 'Rye', cursive;
+}
+
+.underImg {
+    min-width: 2vh;
+    max-width: 20vh;
+    margin-left: 5.75vh;
+    float:left;
+    clear:left;
+     color: olivedrab;
+      font-family: 'Rye', cursive;
+}
+
+.underImg img:hover {
+    
+ transform: scale(1.2);   
 }

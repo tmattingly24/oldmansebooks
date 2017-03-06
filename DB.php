@@ -58,7 +58,8 @@ class DB {
     
     
      public function parseResult($resultSet, $returnCol){
-        
+         mysql_data_seek($resultSet, 0);
+
         $i = 0;
         if($returnCol == "all") {
           
@@ -70,22 +71,40 @@ class DB {
                 
                 
             }
+            
             return $rows;
             
         } else {
-         
-                while ($row = mysql_fetch_assoc($resultSet)) {
-                foreach ($row as $col => $val) {
-                    
-                    if ($col == $returnCol) {
-                        $return = $val;
+               while ($row = mysql_fetch_assoc($resultSet)) {
+                    foreach ($row as $col => $val) {
+                        if ($col == $returnCol) {
+                            if(isset($return)){
+                                
+                                $return = $return.",".$val;
+                                $arr = true;
+                            } else {
+                             
+                                $return = $val;
+                                
+                            }
+                        }
                     }
                 }
-            }
+                 
+               if(isset($arr)){ 
+                   
+                if($arr){
+                 
+                    $return = explode(",", $return);
+                    
+                }
+               }
+               
+                 return $return;
             
-            return $return;
-            
             }
+         
+         
 
         }
 
