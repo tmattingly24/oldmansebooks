@@ -314,8 +314,8 @@ class BOOK {
         $img = $this->getImgById($id);
         
         $book = "<div class = \"topBookList\">
-        <div>$img<div class = \"underImg\"><img src = \"img/icons/glyphicons-225-chevron-left.png\">&nbsp;Next Image&nbsp;<img src = \"img/icons/glyphicons-224-chevron-right.png\"></div></div>
-        <div class = \"bookListInfo\"><ul>
+        <div class = \"img-container\" >$img<div class = \"underImg\"><img src = \"img/icons/glyphicons-225-chevron-left.png\">&nbsp;Next Image&nbsp;<img src = \"img/icons/glyphicons-224-chevron-right.png\"></div></div>
+        <div class = \"bookListInfo column-center\"><ul>
         <li><span class=\"highlight\"><strong>$title</strong></span></li><br>
         <li>&nbsp;ISBN: $isbn</li>
         <li>&nbsp;By: $author</li>

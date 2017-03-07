@@ -1,0 +1,80 @@
+.main {
+    height: 80vh;
+    background-position: center;
+    background-image: url("../img/01shadow.jpg");
+    background-size: cover;
+    margin: 15vh auto 0;
+}
+
+
+
+#box {
+    z-index: 10;
+    position: relative;
+    top: 30%;
+    margin: 0 15% 0 15%;
+    color: burlywood;
+    font-family: 'lobster', cursive;
+    font-size: 1.75em;
+}
+
+#underMain {
+    margin-top: .2%;
+    height: 35vh;
+    background-image: url("../img/04.jpg");
+    background-size: cover;
+    
+}
+
+#teamTitle {
+    margin: .2% 0 1.2% 0;
+    font-size: 2em;
+    text-align: center;
+    /* background-image:url("../img/03.jpg");
+  background-size:cover;*/
+}
+#teamTitle {
+
+ font-family: 'Slabo 27px', serif;
+
+}
+
+#teamTitle h5 {
+
+    font-size: .5em;
+     font-family: 'lobster', cursive;
+
+}
+
+#team {
+    text-align: center;
+}
+
+#underMain3 {
+    height: 35vh;
+    /* background-image:url("../img/03.jpg");
+  background-size:cover;*/
+}
+
+#btnDiv {
+    z-index: 20;
+    padding: .75em;
+    margin: 2.5% 40% 0 40%;
+}
+
+.highlight {
+
+    font-size:1.5em;
+ color: olive;
+    font-family: 'Rye', cursive;
+
+}
+
+#investTerms {
+ margin-left: 38%;
+ text-align: center;
+ color: yellow;
+ font-family: 'arial';
+ font-size: small;
+
+}

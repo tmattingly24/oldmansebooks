@@ -1,0 +1,121 @@
+
+.topBookList  {
+margin:17.5vh 0 2vh 2vw;
+min-height: 35vh;
+max-height:50vh;
+    
+}
+
+.bookList  {
+margin:2.5vh 0 2vh 2vh;
+min-height: 35vh;
+max-height:50vh;
+
+}
+.listImg {
+    margin-left:2vh;
+    margin-top:3vh;
+    min-width: 23vh;
+    min-height: 25vh;
+    max-width: 23vh;
+    max-height: 25vh;
+ 
+    
+    
+}
+
+.bookListInfo {
+    padding: 2vh;
+  margin-left:25vh;
+     display: -webkit-box;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 12;
+  -webkit-box-orient: vertical;  
+}
+
+.photo-frame {
+    box-shadow: 1px 1px 1px 0px #999,
+        2px 2px 1px 0px #888,
+        3px 3px 1px 0px #777,
+        4px 4px 1px 0px #666,
+        5px 5px 1px 0px #555,
+        6px 6px 1px 0px #444,
+        7px 7px 1px 0px #333,
+        8px 8px 3px 0px #303030;
+    -moz-box-shadow: 1px 1px 1px 0px #999,
+        2px 2px 1px 0px #888,
+        3px 3px 1px 0px #777,
+        4px 4px 1px 0px #666,
+        5px 5px 1px 0px #555,
+        6px 6px 1px 0px #444,
+        7px 7px 1px 0px #333,
+        8px 8px 3px 0px #303030;
+    -webkit-box-shadow: 1px 1px 1px 0px #999,
+        2px 2px 1px 0px #888,
+        3px 3px 1px 0px #777,
+        4px 4px 1px 0px #666,
+        5px 5px 1px 0px #555,
+        6px 6px 1px 0px #444,
+        7px 7px 1px 0px #333,
+        8px 8px 3px 0px #303030;
+    transform: translate(-8px,-8px);
+    -ms-transform: translate(-8px,-8px);
+    -moz-transform: translate(-8px,-8px);
+    -webkit-transform: translate(-8px,-8px);
+    -o-transform: translate(-8px,-8px);
+
+    transition: all 0.5s ease 0s;
+    -ms-transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+}
+
+.bookList:nth-child(even){
+    
+    /* background: rgba(220, 220, 220, 1);*/
+}
+
+.bookListInfo h5 {
+
+    font-size: 1.1em;
+     
+}
+
+.price {
+font-size:1.5em;
+ color: olivedrab;
+    font-family: 'Rye', cursive;
+}
+
+.underImg {
+    min-width: 2vh;
+    max-width: 20vh;
+    margin-left: 5.75vh;
+    float:left;
+    clear:left;
+     color: olivedrab;
+      font-family: 'Rye', cursive;
+}
+
+.underImg img:hover {
+    
+ transform: scale(1.2);   
+}
+
+.rightBook {
+    
+    float: right;
+	width: 20%;
+    min-height: 35vh;
+	max-height:50vh;
+   	border: thick solid black;
+}
+
+
+.img-container{ 
+	float: left; 
+	width: 12%; 
+	max-height: 35vh;
+}

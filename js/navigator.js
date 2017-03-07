@@ -39,7 +39,7 @@ function fireNav(where){
      var http = new XMLHttpRequest();
      var url = "navigator.php";
      http.open("POST", url, true);
-
+        
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
 
@@ -50,7 +50,8 @@ function fireNav(where){
             
             
             $('#view').html(http.responseText);
-            
+             
+
         }
     }
     
