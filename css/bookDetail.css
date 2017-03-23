@@ -1,38 +1,37 @@
+ #detailMain{
+	 
+	
+    margin: 15vh auto 0;
+	 
+}
 
-.topBookList  {
+.detailBookList  {
 margin:17.5vh 0 2vh 2vw;
-min-height: 35vh;
-max-height:50vh;
+min-height: 120vh;
     
 }
 
-.bookList  {
-margin:2.5vh 0 2vh 2vh;
-min-height: 35vh;
-max-height:50vh;
-
-}
 .listImg {
+	
     margin-left:2vh;
     margin-top:3vh;
-    min-width: 23vh;
-    min-height: 25vh;
-    max-width: 23vh;
-    max-height: 25vh;
+    min-width: 40vh;
+    min-height: 40vh;
+    max-width: 40vh;
+    max-height: 40vh;
  
     
     
 }
 
-.bookListInfo {
-    padding: 2vh;
-  margin-left:25vh;
-     display: -webkit-box;
-  overflow : hidden;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 12;
-  -webkit-box-orient: vertical;  
+.detailInfo{
+	margin-top:10vh;
+	float:left;
+	clear:none;
+	
 }
+
+
 
 .photo-frame {
     box-shadow: 1px 1px 1px 0px #999,
@@ -72,12 +71,14 @@ max-height:50vh;
     -o-transition: all 0.5s ease 0s;
 }
 
-.bookList:nth-child(even){
-    
-    /* background: rgba(220, 220, 220, 1);*/
+.img-container{ 
+	float: left; 
+	width: 33%; 
+	max-height: 40vh;
 }
 
-.bookListInfo h5 {
+
+.detailInfo h5 {
 
     font-size: 1.1em;
      
@@ -91,10 +92,8 @@ font-size:1.5em;
 
 .underImg {
     min-width: 2vh;
-    max-width: 20vh;
-    margin-left: 5.75vh;
-    float:left;
-    clear:left;
+    max-width: 40vh;
+    margin-left: 15vh;
      color: olivedrab;
       font-family: 'Rye', cursive;
 }
@@ -104,26 +103,6 @@ font-size:1.5em;
  transform: scale(1.2);   
 }
 
-.rightBook {
-    
-    float: right;
-	width: 20%;
-    min-height: 35vh;
-	max-height:50vh;
-   	border: thick solid black;
-}
-
-
-.img-container{ 
-	float: left; 
-	width: 12%; 
-	max-height: 35vh;
-}
-
-.detailLink {
-	
-	color: olive;
-}
 
 .authNav {
 	

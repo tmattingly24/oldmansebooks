@@ -1,25 +1,17 @@
 $(document).ready(function () {
-    
-   var storeMain = document.getElementById('storeMain');
-    
-    if (storeMain === null){
-        
-    } else {
-        
-       initStore($('#numResults').val());
-    }
-    
-    $("#numResults").change(function (){
-            
-            initStore($(this).val());
-    });
-    
+	
+	
+	var title = document.title;
+	getDetail(title);
+	
+	
 });
 
-function getBook(offset, max){
+
+function getDetail(title){
     
   var http = new XMLHttpRequest();
-    var url = "initStore.php";
+    var url = "../getDetail.php";
     http.open("POST", url, true);
 
     //Send the proper header information along with the request
@@ -31,64 +23,41 @@ function getBook(offset, max){
 
         if (http.readyState == 4 && http.status == 200) {
             
-            $('#storeMain').append(http.responseText);
-            if(offset == max-1){
-             
-                storeLoaded();
- 			               
-            }
-
+			
+            $('#detailMain').append(http.responseText);
+			loaded();
         }
     }
     
     
-    http.send("offset=" + offset);
+    http.send("title="+title);
 
 }
-    
-function initStore(numResults){
-    
-    for(var i = 0; i < numResults; i++){
-        
-        if(i==0){
-            
-             $('#storeMain').empty();
-            
-        }
-        getBook(i, numResults);
-        window.scrollTo(0,0);
-           
-    }
-        
-}
 
-
-
-function storeLoaded() {
+function loaded(){
 	
-
-    $('.underImg').click(function (e) {
+	 $(function () {
+				
+     			$('img').each(function (i, e) {
+     				$(e).attr('src', '../' + $(e).attr('src'));
+     			});
+     		});
+	
+	 $('.underImg').click(function (e) {
             
         scrollPhotos(e);
 
     });
 	
-	 $('.detailLink').click(function (e) {
+	$('#cartBtn').click(function (e) {
 		
-        e.preventDefault();   
-        detailNav(e);
-
-    });
-	
-	$('.authNav').click(function (e) {
 		
-        e.preventDefault();   
-        authNav(e);
-
-    });
+		addToCart(e);
+		
+	});
 	
-
 }
+
 
 function scrollPhotos(e){
    
@@ -149,23 +118,12 @@ function scrollPhotos(e){
                    
             }
         }
-    
 }
 
-function detailNav(e){
-	
-	var title = e.target.innerHTML;
-	title = title.replace(/ /g,"-");
-	window.location = 'book/?'+title;
-	
-	
-}
-
-function authNav(e){
-	
-	var author = e.target.innerHTML;
-	author = author.replace(/ /g,"-");
-	window.location = 'author/?'+author;
-	
-	
-}
+	function addToCart(e) {
+		
+		var value = document.getElementById('aboveCart');
+		var num = parseInt(value.innerHTML);
+		num+=1;
+		value.innerHTML = num;
+	}

@@ -14,6 +14,7 @@
         <meta name="keywords" content="books, new books, used books, buy books, sell your books, store, retailer, bookstore" />
         <meta name="author" content="Tim Mattingly" />
         <link rel="stylesheet" href="../css/global.css" />
+		<link rel="stylesheet" href="../css/admin.css" />
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
         <link href="https://fonts.googleapis.com/css?family=Rye" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">

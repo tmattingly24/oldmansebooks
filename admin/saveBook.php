@@ -29,6 +29,7 @@ else {
 $id = $BOOK->getBookID($isbn);
 
 $pub = $book['publisher'];
+$pub = addslashes($pub);
 $pubExists = $BOOK->pubExists($pub);
 
 
@@ -44,6 +45,7 @@ else if(!$pubExists){
 }
 
 $auth = $book['author'];
+$auth = addslashes($auth);
 $authArr = explode("/", $auth);
          
 
@@ -63,12 +65,11 @@ foreach($authArr as $author){
 
 }
 
-$BOOK->addImg($id,$paths);
-
 $condition = $BOOK->getCondition($book['condition']);
 
-$BOOK->createSKU($id,$condition,$book);
+$skuId = $BOOK->createSKU($id,$condition,$book);
 
+$BOOK->addImg($id,$paths,$skuId);
 
 
 ?>

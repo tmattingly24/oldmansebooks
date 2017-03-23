@@ -23,8 +23,9 @@ class BOOK {
     public function insertBook($book){
         
          $genre = $this->getGenre($book['genre']);
+		 $description = addslashes($book['description']);
         
-         $query = "INSERT INTO books (TITLE, ISBN, PUBDATE, GENREID, DESCRIPTION, EDITION, BINDING,QTY) VALUES ('".$book['title']."', '".$book['isbn']."', '".$book['pubDate']."', '".$genre."', '".$book['description']."', '".$book['edition']."', '".$book['binding']."','1')";
+         $query = "INSERT INTO books (TITLE, ISBN, PUBDATE, GENREID, DESCRIPTION, EDITION, BINDING,QTY) VALUES ('".$book['title']."', '".$book['isbn']."', '".$book['pubDate']."', '".$genre."', '".$description."', '".$book['edition']."', '".$book['binding']."','1')";
         
          DB::executeQuery($query, false);
             
@@ -99,7 +100,7 @@ class BOOK {
     
     
     public function insertPub($pub,$id,$newOrUpdate){
-        
+		
         if($newOrUpdate == "new"){
             
              $query = "INSERT INTO publishers(PUBNAME) VALUES ('".$pub."')";
@@ -121,7 +122,7 @@ class BOOK {
     
     
      public function insertAuth($auth,$id,$newOrUpdate){
-        
+       
          echo $newOrUpdate;
          
         if($newOrUpdate == "new"){
@@ -181,8 +182,16 @@ class BOOK {
         $query = "INSERT INTO sku (BOOKID, CONDITIONID, SOLD, SHIPPED, PRICE) VALUES ('".$id."', '".$conditionId."', '0', '0', '".$book['price']."')";
         
          DB::executeQuery($query, false);
-            
-        echo "SKU Created";
+		
+		$query = "SELECT SKU FROM sku ORDER BY SKU DESC LIMIT 1";
+        
+		$result = DB::executeQuery($query, true);
+        
+		$skuId = DB::parseResult($result,'SKU');
+		
+		
+		
+		return $skuId;
         
     }
     
@@ -202,13 +211,13 @@ class BOOK {
         return $id;
     }
     
-    public function addImg($id,$img){
+    public function addImg($id,$img,$skuId){
         
         $imgArr = explode(",",$img);
         
         foreach($imgArr as $nextImg){
             
-            $query = "INSERT INTO img(IMGPATH,BOOKID) VALUES ('".$nextImg."','".$id."')";
+            $query = "INSERT INTO img(IMGPATH,BOOKID,SKU) VALUES ('".$nextImg."','".$id."','".$skuId."')";
             DB::executeQuery($query,false);
         }
         
@@ -300,7 +309,7 @@ class BOOK {
     public function initStore($offset) {
         
         $imgPrefix = "img/bookImg/";
-        $query = "SELECT * FROM books INNER JOIN sku WHERE sku.BOOKID = books.BOOKID AND SOLD = 0 LIMIT 1";
+        $query = "SELECT * FROM books INNER JOIN sku WHERE sku.BOOKID = books.BOOKID AND SOLD = 0 LIMIT 1 OFFSET $offset";
         $result = DB::executeQuery($query, true);
         $edition = DB::parseResult($result,'EDITION');
         $isbn = DB::parseResult($result,'ISBN');
@@ -316,7 +325,7 @@ class BOOK {
         $book = "<div class = \"topBookList\">
         <div class = \"img-container\" >$img<div class = \"underImg\"><img src = \"img/icons/glyphicons-225-chevron-left.png\">&nbsp;Next Image&nbsp;<img src = \"img/icons/glyphicons-224-chevron-right.png\"></div></div>
         <div class = \"bookListInfo column-center\"><ul>
-        <li><span class=\"highlight\"><strong>$title</strong></span></li><br>
+        <li><a class = \"detailLink\" href = \"\"><span class=\"highlight\"><strong>$title</strong></span></a></li><br>
         <li>&nbsp;ISBN: $isbn</li>
         <li>&nbsp;By: $author</li>
         <li>&nbspPublished: $pubDate</li>
@@ -331,24 +340,99 @@ class BOOK {
         return $book;
         
     }
+	
+	
+	public function getDetail($title){
+		
+		if (strpos($title, '-') !== FALSE){
+ 			
+			$title = str_replace('-'," ",$title);	
+			
+		}
+		
+		$query = "SELECT * FROM books WHERE TITLE = \"$title\"";
+        $result = DB::executeQuery($query, true);
+		$id = DB::parseResult($result, 'BOOKID');
+        $edition = DB::parseResult($result,'EDITION');
+        $isbn = DB::parseResult($result,'ISBN');
+        $title = DB::parseResult($result, 'TITLE');
+        $description = DB::parseResult($result, 'DESCRIPTION');
+        $pubDate = DB::parseResult($result, 'PUBDATE');
+        $author = $this->getAuthNameById($id);
+        $publisher = $this->getPubNameById($id);
+		$qty = DB::parseResult($result, 'QTY');
+        $img = $this->getImgById($id);
+		$query = "SELECT * FROM sku WHERE BOOKID = \"$id\"";
+        $result = DB::executeQuery($query, true);
+		$price = DB::parseResult($result, 'PRICE');
+		
+		
+		if(is_array($price)){
+		
+			echo 'array'; //handle more than one here
+			
+		}
+		
+		$bookDetail = "<div class = \"detailBookList\">
+        <div class = \"img-container\" >$img<div class = \"underImg\"><img src = \"img/icons/glyphicons-225-chevron-left.png\">&nbsp;Next Image&nbsp;<img src = \"img/icons/glyphicons-224-chevron-right.png\"></div></div>
+        <div class = \"detailInfo\"><ul>
+        <li><span class=\"highlight\"><strong>$title</strong></span></li><br>
+        <li>&nbsp;ISBN: $isbn</li>
+        <li>&nbsp;By: $author</li>
+        <li>&nbspPublished: $pubDate</li>
+        <li>&nbspBy: $publisher</li>
+        <li>&nbspEdition: $edition</li><br>
+        <li><span class=\"price\"><strong>Price: $$price</strong></span></li><br>
+        <li><h5><p></p>$description </p></h5><li>
+        </ul><br><br>
+		<h5 class = \"highlight\"><strong>Currently $qty in stock</strong></h5>
+		<br><br>
+		<button id = \"cartBtn\" class = \"btn\">Add To Cart</button>
+        </div>
+        </div>";
+		
+		
+		return $bookDetail;
+	}
     
    public function getAuthNameById($bookId){
-        
+       
+	   $i=0;
        $query = "SELECT AUTHID FROM linkauthbooks WHERE BOOKID = \"$bookId\"";
        $result = DB::executeQuery($query, true);
        $authId = DB::parseResult($result,'AUTHID');
-       $query = "SELECT AUTHNAME FROM authors WHERE AUTHID = \"$authId\"";
-       $result = DB::executeQuery($query, true);
-       $author = DB::parseResult($result,'AUTHNAME');
+	   
+	   if(is_array($authId)) {
+		   
+		   foreach($authId as $id){
+			   
+			   $query = "SELECT AUTHNAME FROM authors WHERE AUTHID = \"$id\"";
+       		   $result = DB::executeQuery($query, true);
+       		   $author = DB::parseResult($result,'AUTHNAME');
+			   
+			   if($i==0){
+				   
+					$returnAuthor = '<a href = "" class = "authNav">'.$author.'</a>';
+				   	$i++;
+			   } else {
+				   
+				   $returnAuthor = $returnAuthor.' / <a href = "" class = "authNav">'.$author.'</a>';
+			   }
+		   }
+		   
+	   }
+		  
+	   if(!isset($returnAuthor)){
+         
+		   $query = "SELECT AUTHNAME FROM authors WHERE AUTHID = \"$authId\"";
+       	   $result = DB::executeQuery($query, true);
+       	   $author = DB::parseResult($result,'AUTHNAME');
+           $returnAuthor = '<a href = "" class = "authNav">'.$author.'</a>';
+            
+        }
+      
        
-       if(is_array($author)){
-           
-           /*handle it*/
-           
-       }
- 
-       
-       return $author;
+       return $returnAuthor;
         
         
         
@@ -403,7 +487,43 @@ class BOOK {
         
         
     }
-        
+	
+	public function randBook() {
+		
+		
+		$query = "SELECT BOOKID FROM books ORDER BY BOOKID DESC LIMIT 1";
+		$result = DB::executeQuery($query, true);
+       	$bigId = DB::parseResult($result,'BOOKID');
+
+		$query = "SELECT BOOKID FROM books ORDER BY BOOKID ASC LIMIT 1";
+		$result = DB::executeQuery($query, true);
+       	$smallId = DB::parseResult($result,'BOOKID');
+
+
+		$randomId = mt_rand($smallId, $bigId);
+		
+		$query = "SELECT * FROM books WHERE BOOKID = $randomId";
+		$result = DB::executeQuery($query, true);
+       	$edition = DB::parseResult($result,'EDITION');
+        $isbn = DB::parseResult($result,'ISBN');
+        $title = DB::parseResult($result, 'TITLE');
+        $description = DB::parseResult($result, 'DESCRIPTION');
+        $pubDate = DB::parseResult($result, 'PUBDATE');
+        $author = $this->getAuthNameById($randomId);
+        $publisher = $this->getPubNameById($randomId);
+		$qty = DB::parseResult($result, 'QTY');
+        $img = $this->getImgById($randomId);
+		$query = "SELECT * FROM sku WHERE BOOKID = \"$randomId\"";
+        $result = DB::executeQuery($query, true);
+		$price = DB::parseResult($result, 'PRICE');
+		
+$book = "<a href = \"#\">$img</a>";
+		
+		return $book;
+		
+	}
+	
+	
         
         
     

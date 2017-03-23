@@ -1,37 +1,96 @@
-
-.topBookList  {
-margin:17.5vh 0 2vh 2vw;
-min-height: 35vh;
-max-height:50vh;
-    
+.welcomeMain {
+	
+    height: 99.5vh;
+    margin: 7vh auto 3vh;
+	
 }
 
-.bookList  {
-margin:2.5vh 0 2vh 2vh;
-min-height: 35vh;
-max-height:50vh;
+.aboveMain {
+	
+	height: 12vh;
+	margin: 18vh 0 0 0;
+	line-height: 3em;
+}
+
+.highlightTitle {
+
+    font-size:3em;
+ 	color: olive;
+    font-family: 'Rye', cursive;
 
 }
+
+.welcomeSmallTitle{
+
+ font-size: 3em;
+ font-family: 'Slabo 27px', serif;
+
+}
+
+#searchBox {
+	font-size: 1.5em;
+ font-family: 'Slabo 27px', serif;
+	width: 33%;
+}
+
+.aboveMain label {
+	font-size: 1.5em;
+ font-family: 'Slabo 27px', serif;
+	
+}
+
+.leftBook {
+	float:left;
+	clear:left;
+	width:30%;
+	height: 26.5vh;
+	background-color:blue;
+	
+}
+
+.centerBook {
+	float:left;
+	width:30%;
+	height: 26.5vh;
+	background-color:blue;
+	
+}
+
+.rightwBook {
+	float:right;
+	width:30%;
+	height: 26.5vh;
+	background-color:blue;
+	
+}
+
+.grid {
+  display: flex;                       /* establish flex container */
+  flex-wrap: wrap;                     /* enable flex items to wrap */
+  justify-content: space-around;
+  
+}
+.cell {
+  flex: 0 0 33/2%;                       /* don't grow, don't shrink, width */
+  height: 26.5vh;
+  
+}
+
+
+.founder {
+ font-style:italic;
+ font-size: 1.5em;
+ font-family: 'Slabo 27px', serif;	
+	
+}
+
 .listImg {
+	margin-top:1vh;
     margin-left:2vh;
-    margin-top:3vh;
     min-width: 23vh;
     min-height: 25vh;
     max-width: 23vh;
     max-height: 25vh;
- 
-    
-    
-}
-
-.bookListInfo {
-    padding: 2vh;
-  margin-left:25vh;
-     display: -webkit-box;
-  overflow : hidden;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 12;
-  -webkit-box-orient: vertical;  
 }
 
 .photo-frame {
@@ -72,61 +131,3 @@ max-height:50vh;
     -o-transition: all 0.5s ease 0s;
 }
 
-.bookList:nth-child(even){
-    
-    /* background: rgba(220, 220, 220, 1);*/
-}
-
-.bookListInfo h5 {
-
-    font-size: 1.1em;
-     
-}
-
-.price {
-font-size:1.5em;
- color: olivedrab;
-    font-family: 'Rye', cursive;
-}
-
-.underImg {
-    min-width: 2vh;
-    max-width: 20vh;
-    margin-left: 5.75vh;
-    float:left;
-    clear:left;
-     color: olivedrab;
-      font-family: 'Rye', cursive;
-}
-
-.underImg img:hover {
-    
- transform: scale(1.2);   
-}
-
-.rightBook {
-    
-    float: right;
-	width: 20%;
-    min-height: 35vh;
-	max-height:50vh;
-   	border: thick solid black;
-}
-
-
-.img-container{ 
-	float: left; 
-	width: 12%; 
-	max-height: 35vh;
-}
-
-.detailLink {
-	
-	color: olive;
-}
-
-.authNav {
-	
-	color: olive;
-	
-}
